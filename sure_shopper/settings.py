@@ -87,8 +87,12 @@ WSGI_APPLICATION = 'sure_shopper.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sureshopper',
+        'USER': getenv('DB_USER'),
+        'PASSWORD': getenv('DB_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -148,3 +152,6 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,      # issues a new refresh token on every refresh
     'BLACKLIST_AFTER_ROTATION': True,   # blacklists the old refresh token after rotation
 }
+
+GDAL_LIBRARY_PATH = getenv('GDAL_LIBRARY_PATH')
+GEOS_LIBRARY_PATH = getenv('GEOS_LIBRARY_PATH')
